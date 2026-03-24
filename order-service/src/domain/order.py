@@ -2,7 +2,7 @@ from enum import Enum
 from dataclasses import dataclass, field
 from typing import List, Dict
 from datetime import datetime
-from .events import OrderCreated
+from .events import OrderCreated, OrderCancelled
 
 class OrderStatus(Enum):
     PENDING = "PENDING"
@@ -31,7 +31,11 @@ class Order:
             raise ValueError(f"Cannot confirm order in status {self.status}")
         self.status = OrderStatus.CONFIRMED
 
-    def cancel(self):
+    def cancel(self, reason: str = "Unknown"):
         if self.status == OrderStatus.CANCELLED:
-            raise ValueError("Order is already cancelled")
+            return # Already cancelled
         self.status = OrderStatus.CANCELLED
+        self.events.append(OrderCancelled(
+            order_id=self.order_id,
+            reason=reason
+        ))

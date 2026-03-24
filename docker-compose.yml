@@ -10,6 +10,16 @@ services:
       - AMQP_URL=amqp://guest:guest@rabbitmq:5672/
       - PYTHONPATH=/app
 
+  order-saga-consumer:
+    build:
+      context: ./order-service
+    depends_on:
+      - rabbitmq
+    environment:
+      - AMQP_URL=amqp://guest:guest@rabbitmq:5672/
+      - PYTHONPATH=/app
+    command: python src/consumers/payment_failed_consumer.py
+
   payment-service:
     build:
       context: ./payment-service

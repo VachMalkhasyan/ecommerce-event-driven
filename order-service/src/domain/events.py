@@ -9,3 +9,9 @@ class OrderCreated:
     items: List[Dict]
     total_amount: float
     timestamp: datetime = field(default_factory=datetime.utcnow)
+
+@dataclass(frozen=True)
+class OrderCancelled:
+    order_id: str
+    reason: str
+    timestamp: datetime = field(default_factory=datetime.utcnow)

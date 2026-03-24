@@ -1,0 +1,13 @@
+[project]
+name = "order-service"
+version = "0.1.0"
+description = "Order management service for e-commerce"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

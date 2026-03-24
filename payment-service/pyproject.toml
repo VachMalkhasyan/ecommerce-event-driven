@@ -1,0 +1,13 @@
+[project]
+name = "payment-service"
+version = "0.1.0"
+description = "Payment processing service for e-commerce"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "stripe",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

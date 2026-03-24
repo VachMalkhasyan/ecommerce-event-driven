@@ -1,0 +1,24 @@
+services:
+  order-service:
+    build:
+      context: ./order-service
+    ports:
+      - "8000:8000"
+
+  payment-service:
+    build:
+      context: ./payment-service
+    ports:
+      - "8001:8001"
+
+  inventory-service:
+    build:
+      context: ./inventory-service
+    ports:
+      - "8002:8002"
+
+  notification-service:
+    build:
+      context: ./notification-service
+    ports:
+      - "8003:8003"
